@@ -22,6 +22,7 @@ BEGIN
   IF EXISTS (SELECT 1 FROM Telephone WHERE TelephoneId = @idTelephone)
     AND EXISTS (SELECT 1 FROM Job WHERE JobId = @idJob)
     AND EXISTS (SELECT 1 FROM Person  WHERE PersonId = @idPerson)
+	AND NOT EXISTS (SELECT 1 FROM Telephone  WHERE Number = @telephoneNumber)
   BEGIN
     UPDATE Job
     SET Name = @jobName,
